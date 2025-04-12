@@ -17,8 +17,8 @@ elif option == "Search Movies":
         if query:
             results = search_similar_movies(query)
             if results:
-                for title, description in results:
-                    st.write(f"🎥 **{title}**: {description}")
+                for series_title, overview in results:
+                    st.write(f"🎥 **{series_title}**: {overview}")
             else:
                 st.warning("⚠️ No results found. Try another query.")
         else:

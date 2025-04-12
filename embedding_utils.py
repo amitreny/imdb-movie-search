@@ -15,12 +15,12 @@ def generate_embedding(text):
 def upload_embeddings(csv_path="data\IMDB top 1000.csv"):
     """Load dataset, create embeddings, and upload to Pinecone"""
     df = pd.read_csv(csv_path)
-    df = df[["Title", "Description"]].dropna()
+    df = df[["Series_Title", "Overview"]].dropna()
 
     for i, row in df.iterrows():
-        movie_text = f"{row['Title']}: {row['Description']}"
+        movie_text = f"{row['Series_Title']}: {row['Overview']}"
         embedding = generate_embedding(movie_text)
-        index.upsert([(str(i), embedding, {"title": row['Title'], "description": row['Description']})])
+        index.upsert([(str(i), embedding, {"series_title": row['Series_Title'], "overview": row['Overview']})])
 
     print("✅ Embeddings uploaded successfully.")
 
@@ -34,9 +34,9 @@ def search_similar_movies(query, top_k=5):
     unique_movies = {}
     
     for res in results["matches"]:
-        title = res["metadata"]["title"]
+        title = res["metadata"]["series_title"]
         if title not in unique_movies:
-            unique_movies[title] = res["metadata"]["description"]
+            unique_movies[title] = res["metadata"]["overview"]
         if len(unique_movies) == top_k:
             break  # Stop when we reach the desired unique results
 
