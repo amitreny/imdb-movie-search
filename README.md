@@ -61,7 +61,7 @@ streamlit run app.py
 - Ensures **no duplicate results** in search results.
 
 ## 📜 Dataset
-- **IMDb Top 1000 Movies Dataset** from Kaggle ([Download Here](https://www.kaggle.com/datasets/omarhanyy/imdb-top-1000)).
+- **IMDb Top 1000 Movies Dataset** from Kaggle ([Download Here](https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows?resource=download)).
 - Contains **movie titles, overviews, and other metadata**.
 
 ## 🌟 Future Enhancements
